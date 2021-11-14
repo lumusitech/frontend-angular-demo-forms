@@ -1,7 +1,87 @@
-<h2>Template: Dinamics</h2>
+<h2>Template: <small>Dinamics</small></h2>
 <hr />
 <div class="row">
   <div class="col">
-    <form></form>
+    <form class="form-group" (ngSubmit)="save()" #myForm="ngForm">
+      <!-- Name input -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre de la persona"
+            ngModel
+            name="name"
+            required
+            autocomplete="off"
+          />
+
+          <span
+            *ngIf="
+              myForm.controls['name']?.errors &&
+              myForm.controls['name']?.touched
+            "
+            class="form-text text-danger"
+            >Este Campo es obligatorio</span
+          >
+        </div>
+      </div>
+
+      <!-- Add favourite input -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Favorito</label>
+        <div class="col-sm-9">
+          <div class="input-group">
+            <input class="form-control" placeholder="Agregar favorito" />
+            <button class="btn btn-outline-primary" type="button">
+              Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- favourite games list -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9">
+          <input class="form-control mb-3" />
+          <input class="form-control mb-3" />
+          <input class="form-control mb-3" />
+          <input class="form-control mb-3" />
+          <input class="form-control mb-3" />
+        </div>
+      </div>
+
+      <!-- Button Submit -->
+      <div class="row">
+        <div class="col-sm-12">
+          <button
+            type="button"
+            (click)="save()"
+            class="btn btn-primary float-end"
+            [disabled]="myForm.invalid"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ myForm.valid | json }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine | json }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ myForm.touched | json }}</pre>
+
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
   </div>
 </div>
