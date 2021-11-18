@@ -2,6 +2,87 @@
 <hr />
 <div class="row">
   <div class="col">
-    <form></form>
+    <form class="form-group" [formGroup]="myForm" (ngSubmit)="save()">
+      <!-- Product Field -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Producto</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre del producto"
+            formControlName="name"
+          />
+
+          <span *ngIf="isInvalidField('name')" class="form-text text-danger"
+            >Debe ser de 3 letras
+          </span>
+        </div>
+      </div>
+
+      <!-- Price Field -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Precio</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Precio del producto"
+            formControlName="price"
+          />
+
+          <span *ngIf="isInvalidField('price')" class="form-text text-danger"
+            >Debe ser un número positivo
+          </span>
+        </div>
+      </div>
+
+      <!-- Stock Field -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Stock</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Stock del producto"
+            formControlName="stock"
+          />
+
+          <span *ngIf="isInvalidField('stock')" class="form-text text-danger"
+            >Debe ser un número positivo
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button
+            type="submit"
+            class="btn btn-primary float-end"
+          >
+            Enviar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ myForm.valid | json }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine | json }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ myForm.touched | json }}</pre>
+
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
+
+    <span>Price</span>
+    <pre>{{ myForm.controls['price']?.errors | json }}</pre>
   </div>
 </div>
