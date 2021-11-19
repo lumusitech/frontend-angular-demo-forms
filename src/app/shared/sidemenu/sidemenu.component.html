@@ -1,3 +1,4 @@
+<!-- Template Forms Approach -->
 <h2>Template</h2>
 <hr />
 <ul class="list-group">
@@ -11,6 +12,7 @@
   </li>
 </ul>
 
+<!-- Reactive Forms Approach -->
 <h2 class="mt-5">Reactive</h2>
 <hr />
 <ul class="list-group">
@@ -23,3 +25,16 @@
     {{ item.text }}
   </li>
 </ul>
+
+<!-- Validations -->
+<h2 class="mt-5">Validations</h2>
+<hr />
+
+<li
+  *ngFor="let item of authMenu"
+  class="list-group-item"
+  [routerLink]="[item.path]"
+  routerLinkActive="active"
+>
+  {{ item.text }}
+</li>
